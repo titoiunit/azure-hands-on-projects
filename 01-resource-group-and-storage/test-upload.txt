@@ -1,0 +1,5 @@
+Hello from Azure Project 01.
+
+This file was uploaded to Azure Blob Storage using Azure CLI.
+
+Project: Resource Group and Storage Foundation
