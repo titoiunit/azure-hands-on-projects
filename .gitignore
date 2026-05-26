@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Environment / secrets
+.env
+*.pem
+*.key
+*.pfx
+
+# Python
+__pycache__/
+*.pyc
+
+# Azure
+.azure/
