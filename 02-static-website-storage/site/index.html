@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Azure Static Website</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #5f6b7a;
+      --accent: #2563eb;
+      --line: #e6eaf0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f7f8fb 0%, #eef4ff 100%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 880px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #eaf1ff;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 44px;
+      line-height: 1.1;
+      margin: 0 0 16px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      background: #fbfcff;
+    }
+
+    .item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .item span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="badge">Azure Hands-on Portfolio Project 02</div>
+
+    <h1>Azure Static Website</h1>
+
+    <p>
+      Hosted on Azure Storage and built as part of my Azure hands-on cloud portfolio.
+      This project demonstrates Resource Groups, Storage Accounts, Static Website Hosting,
+      the $web container, Azure CLI verification, and safe cleanup after testing.
+    </p>
+
+    <div class="grid">
+      <div class="item">
+        <strong>Cloud Platform</strong>
+        <span>Microsoft Azure</span>
+      </div>
+
+      <div class="item">
+        <strong>Hosting Service</strong>
+        <span>Azure Storage Static Website Hosting</span>
+      </div>
+
+      <div class="item">
+        <strong>Storage Structure</strong>
+        <span>Static files uploaded to the $web container</span>
+      </div>
+
+      <div class="item">
+        <strong>Verification</strong>
+        <span>Resources and uploaded files verified with Azure CLI</span>
+      </div>
+
+      <div class="item">
+        <strong>AWS Comparison</strong>
+        <span>Azure version of an AWS S3 static website project</span>
+      </div>
+
+      <div class="item">
+        <strong>Cost Safety</strong>
+        <span>Cleanup completed after testing to avoid unnecessary costs</span>
+      </div>
+    </div>
+
+    <footer>
+      Built by Titoiunit as part of an Azure cloud engineering portfolio.
+    </footer>
+  </main>
+</body>
+</html>
