@@ -1,124 +1,57 @@
-# 01 - Resource Group and Storage Foundation
+# Azure Lab 01 — Resource Group + Private Blob Storage
 
-## Goal
+**Status:** Completed manual Azure CLI lab; resources were deleted and cleanup is recorded in [cleanup proof](cleanup-proof.md).
 
-Create the first Azure foundation using a free-tier-first approach.
-
-## What I Built
-
-- Azure Resource Group
-- Azure Storage Account
-- Private Azure Blob Container
-- Test file upload to Blob Storage
-- Azure CLI verification workflow
-- Screenshot documentation
-- Cleanup proof
-
-## Azure Region
-
-```text
-northeurope
-```
-
-## Resource Names
-
-```text
-Resource Group: rg-azure-hands-on-01
-Storage Account: sttitam1779789277
-Container: lab-container
-```
+This lab establishes the Azure control-plane and storage basics behind later workloads: a resource group, a storage account, a private blob container, and a verified upload path.
 
 ## Architecture
 
-```text
-Local macOS Terminal
-→ Azure CLI
-→ Azure Subscription
-→ Resource Group
-→ Storage Account
-→ Blob Container
-→ Uploaded test file
+```mermaid
+flowchart LR
+    T[Local terminal<br/>Azure CLI] --> RG[Resource group]
+    RG --> SA[Storage account]
+    SA --> BC[Private blob container]
+    T -->|upload + verify| BC
 ```
 
-## Commands Practiced
+## What I implemented
 
-```zsh
-az login
-az account show
-az provider register --namespace Microsoft.Storage
-az group create
-az group show
-az storage account create
-az storage account show
-az storage container create
-az storage container list
-az storage blob upload
-az storage blob list
-```
+- Created and inspected the resource group with Azure CLI.
+- Registered the `Microsoft.Storage` resource provider when the subscription returned `SubscriptionNotFound`.
+- Created a Standard_LRS storage account and private blob container.
+- Uploaded and listed a test object through Azure CLI.
+- Captured screenshots and cleanup evidence.
+- Deleted the resource group and verified that it no longer existed.
 
-## Troubleshooting
+## Engineering notes
 
-During this project, Azure Storage Account creation initially failed with:
+| Decision | Reason |
+| --- | --- |
+| Resource group as the lab boundary | Makes ownership, lifecycle, and cleanup unambiguous. |
+| Private blob container | Avoids treating object storage as public by default. |
+| Azure CLI verification | Produces a repeatable record rather than relying only on portal clicks. |
+| Resource-provider troubleshooting | Shows how to investigate a control-plane error before changing the design. |
+| Delete at resource-group scope | Removes the dependent resources together and controls ongoing cost. |
 
-```text
-SubscriptionNotFound
-```
+## Validation evidence
 
-The issue was fixed by registering the Microsoft.Storage resource provider:
+- A test upload is stored in [test-upload.txt](test-upload.txt).
+- Screenshots are kept under `screenshots/`.
+- Cleanup was verified with:
 
-```zsh
-az provider register --namespace Microsoft.Storage
-```
-
-This helped me understand that Azure services depend on resource providers, and some providers may need to be registered before creating resources.
-
-## Cost Safety
-
-This lab uses a small Azure Storage setup for learning.
-
-Free-tier-first rules:
-
-- Use simple learning resources
-- Use Standard_LRS for basic storage redundancy
-- Do not commit keys or secrets
-- Delete resources after the lab
-- Keep cleanup proof in the repo
-
-## Screenshots
-
-```text
-screenshots/01-resource-group.png
-screenshots/02-storage-account.png
-screenshots/03-blob-container.png
-screenshots/04-uploaded-blob.png
-```
-
-## What I Learned
-
-In this project, I learned how to create a basic Azure foundation using Azure CLI.
-
-I practiced creating a resource group, deploying a storage account, creating a private blob container, uploading a test file, and verifying the result from the command line.
-
-I also learned how to troubleshoot Azure resource provider issues and document the fix clearly.
-
-This project helped me understand how Azure resources are grouped, named, tagged, tested, documented, and cleaned up safely.
-
-## Cleanup Proof
-
-Cleanup command:
-
-```zsh
-az group delete --name rg-azure-hands-on-01 --yes --no-wait
-```
-
-Cleanup verification:
-
-```zsh
+```bash
 az group exists --name rg-azure-hands-on-01
+# false
 ```
 
-Expected result after cleanup:
+## 30-second interview story
 
-```text
-false
+> I created a private Blob Storage baseline with Azure CLI, not just through the portal. When the storage deployment returned a provider-related error, I registered the required resource provider, repeated the deployment, and documented the fix. I then verified a private container upload and deleted the full resource group, with evidence that the lab was cleaned up.
+
+## Cost and cleanup
+
+The lab is intentionally short-lived. Recreate it only for validation, then remove the resource group:
+
+```bash
+az group delete --name rg-azure-hands-on-01 --yes --no-wait
 ```
