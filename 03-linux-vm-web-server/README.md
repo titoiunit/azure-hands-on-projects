@@ -1,156 +1,57 @@
-# Azure Hands-on Portfolio Project 03 — Linux VM Web Server
+# Azure Lab 03 — Linux VM Web Server Feasibility Assessment
 
-## Status
+**Status:** Paused before deployment. No virtual machine was created.
 
-Paused before deployment due to Azure subscription, VM SKU, and quota limitations.
+This is a documented cost-and-capacity decision, not a falsely completed VM lab. The goal was to deploy a small Ubuntu VM, connect with SSH, install NGINX, and validate HTTP access. The subscription and regional SKU constraints made the intended low-cost VM unavailable, so I investigated and stopped rather than deploying a more expensive alternative.
 
-## Overview
+## Intended architecture
 
-The goal of this project was to create a small Ubuntu Linux Virtual Machine in Microsoft Azure, connect to it using SSH, install NGINX, and test the web server through a public IP address.
+```mermaid
+flowchart LR
+    U[Browser / administrator] --> P[Public IP]
+    P --> NSG[Network Security Group]
+    NSG --> VM[Ubuntu VM + NGINX]
+```
 
-This project was planned as the Azure equivalent of a basic AWS EC2 web server lab.
+## What I investigated
 
-## What I Tried to Build
+- Azure Portal VM creation in North Europe.
+- Small VM options, especially `Standard_B1s`.
+- Subscription and regional SKU availability.
+- vCPU quota and quota-adjustment eligibility.
+- Required resource providers: `Microsoft.Compute`, `Microsoft.Network`, and `Microsoft.Quota`.
+- SSH public-key and Network Security Group configuration for the intended design.
 
-The planned architecture was:
+## Outcome and decision
 
-- Azure Resource Group
-- Ubuntu Linux Virtual Machine
-- SSH public key authentication
-- Public IP address
-- Network Security Group
-- SSH access on port 22
-- HTTP access on port 80
-- NGINX web server
+The intended `Standard_B1s` size was shown as `NotAvailableForSubscription` in North Europe. The subscription was not eligible for quota adjustment. I registered the relevant providers and confirmed that the limitation remained.
 
-## What Happened
+| Option | Decision | Reason |
+| --- | --- | --- |
+| Use a larger available VM | Rejected | It would undermine the lab’s cost guardrail. |
+| Request more quota | Not available | The subscription did not permit a quota adjustment. |
+| Continue without a VM | Chosen | It avoids unnecessary spend and documents the constraint clearly. |
 
-The VM deployment was stopped at the VM size selection step.
+## Why this is still useful evidence
 
-The intended VM size was Standard_B1s because it is a small, low-cost, free-services-eligible VM size.
+Cloud engineering includes knowing when **not** to deploy. I separated the deployment blocker from the intended architecture, investigated provider/quota state, recorded the evidence, and left no VM running. That is a more credible operational decision than forcing an uneconomical resource into a portfolio lab.
 
-However, Azure showed that Standard_B1s was not available for my current subscription in North Europe.
+## If resumed
 
-The Azure Portal showed:
+1. Choose a subscription/region where a cost-safe VM SKU is available.
+2. Create an Ubuntu VM with SSH public-key authentication.
+3. Limit Network Security Group ingress to SSH from an administrator IP and HTTP only as required.
+4. Install NGINX, validate the site, and collect logs and screenshots.
+5. Delete the full resource group and record the result.
 
-- Standard_B1s
-- free services eligible
-- NotAvailableForSubscription
-- Region: North Europe
+## 30-second interview story
 
-I also tested other small VM size families, but the available options were not suitable for this cost-safe learning lab.
+> I planned a basic Linux web-server lab, but the small VM SKU was not available for my subscription and region. I checked providers, quotas, and alternate SKUs. Because the alternative would have increased cost for a learning exercise, I paused the deployment, documented the actual constraint, and made sure no VM resources were left behind. That reinforced that cloud work is cost- and constraint-aware, not just about provisioning services.
 
-## Quota and Subscription Limitation
+## Cleanup
 
-I checked Azure Quotas and discovered that my current subscription was not eligible for quota adjustment.
+No VM was deployed. If the lab resource group exists during a future retry, remove it after validation:
 
-Azure showed:
-
-Ineligible for quota adjustment.
-Azure subscription 1 is not eligible for quota adjustment.
-Consider upgrading your subscription.
-
-I registered the required Azure resource providers:
-
-- Microsoft.Compute
-- Microsoft.Network
-- Microsoft.Quota
-
-After registration, the providers showed as Registered.
-
-However, the subscription still could not request quota increases.
-
-## Decision
-
-I decided not to deploy a larger or more expensive VM size.
-
-The reason is simple: this is a learning and portfolio lab, and the goal is to keep Azure usage cost-safe.
-
-Instead of forcing the deployment, I paused the project and documented the real-world limitation.
-
-This was the correct cloud engineering decision:
-
-- Do not deploy expensive resources just to complete a lab
-- Understand the subscription limitation
-- Avoid unnecessary cloud costs
-- Document the issue clearly
-- Clean up any created resources
-- Continue with safer Azure labs that do not require VM quota
-
-## Screenshots
-
-This project includes screenshots showing the attempted setup:
-
-- Resource group review in North Europe
-- VM Basics configuration with Ubuntu Server 24.04 LTS
-- SSH public key field and inbound port selection
-- Standard_B1s NotAvailableForSubscription error
-- OS disk configured as Standard SSD
-- Final validation failure before deployment
-
-## Cost Safety
-
-No virtual machine was deployed.
-
-If the resource group exists, it should be deleted with:
-
-    az group delete --name rg-rce-03-linux-vm-web-server --yes --no-wait
-
-The resource group can be checked with:
-
-    az group exists --name rg-rce-03-linux-vm-web-server
-
-Expected safe result:
-
-    false
-
-## What I Learned
-
-I learned that Azure VM deployment depends on:
-
-- Subscription type
-- Region
-- VM SKU availability
-- vCPU quota
-- Resource provider registration
-- Quota adjustment eligibility
-
-I also learned that free-services-eligible does not always mean that the VM size is available for every subscription in every region.
-
-This was a useful real-world cloud lesson. Sometimes the right decision is not to continue deploying, but to stop, investigate, avoid unnecessary costs, and document the limitation professionally.
-
-## AWS Comparison
-
-This project was planned as the Azure equivalent of an AWS EC2 web server lab.
-
-The mapping would have been:
-
-- Azure Virtual Machine = AWS EC2 Instance
-- Azure Network Security Group = AWS Security Group
-- Azure Public IP = EC2 Public IPv4
-- SSH port 22 = SSH access to Linux server
-- HTTP port 80 = browser access to web server
-- NGINX = web server running on the VM
-
-## Next Step
-
-Continue with Azure hands-on projects that do not require VM quota.
-
-Return to this VM lab later only if:
-
-- the subscription is upgraded,
-- small VM sizes become available in North Europe,
-- quota adjustment becomes available,
-- or another safe Azure subscription is used.
-
-## Interview Summary
-
-I started an Azure Linux VM web server lab where the goal was to deploy an Ubuntu VM, connect with SSH, install NGINX, and test it through a public IP.
-
-The deployment stopped at the VM size selection stage because the small low-cost VM size Standard_B1s was not available for my subscription in North Europe.
-
-I investigated the issue using Azure Portal and Azure CLI, registered the required resource providers, checked quota settings, and confirmed that the subscription was not eligible for quota adjustment.
-
-Because I wanted to keep the lab cost-safe, I decided not to deploy a larger VM. I paused the project, documented the limitation, and made sure no unnecessary resources were left running.
-
-This taught me that cloud work is not only about deploying resources, but also about understanding limits, managing cost risk, and making safe engineering decisions.
+```bash
+az group delete --name rg-rce-03-linux-vm-web-server --yes --no-wait
+```
