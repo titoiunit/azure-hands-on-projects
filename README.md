@@ -1,50 +1,47 @@
 # Azure Hands-On Projects
 
-A cost-aware Azure learning repository that complements my AWS, Terraform, Docker, and CI/CD work. The goal is not to claim an always-on production platform; it is to build small, explainable labs with clear validation, operational reasoning, and cleanup.
+A cost-aware Azure learning repository that complements my AWS, Terraform, Docker, and CI/CD work. It is organised as a set of small, explainable labs rather than a collection of always-on resources.
 
-## Recruiter guide
+## How to read this repository
 
-This repository demonstrates how I transfer core cloud-engineering patterns across providers:
+- **Completed** means the repository contains the implementation or manual-lab evidence and the cleanup record.
+- **Paused** means a real constraint was investigated and documented; it is not presented as a shipped solution.
+- **Planned scaffold** means the folder contains the exact build and evidence contract, but no deployment is claimed.
 
-- secure storage and static delivery
-- network boundaries and identity
-- serverless and event-driven design
-- container deployment
-- monitoring and alerting
-- Infrastructure as Code with Terraform
+A project becomes a featured portfolio case study only after it has implementation, validation evidence, operational notes, and cleanup instructions.
 
-Each lab becomes a featured portfolio item only when it includes implementation, a validation record, documented trade-offs, and cleanup instructions.
+## Labs
 
-## Learning workstreams
+| Lab | Status | Focus | Cloud-engineering signal |
+| --- | --- | --- | --- |
+| [01 — Resource Group + Private Blob Storage](01-resource-group-and-storage/) | Completed + cleaned up | Azure CLI, private object storage, provider registration | Control-plane troubleshooting, resource boundaries, lifecycle discipline |
+| [02 — Static Website on Azure Storage](02-static-website-storage/) | Completed + cleaned up | Storage static website hosting | Low-operations delivery, validation, public-edge trade-off |
+| [03 — Linux VM Feasibility Assessment](03-linux-vm-web-server/) | Paused before deployment | VM SKU, quota, region, and cost constraints | Investigate, choose not to overspend, document the decision |
+| [04 — Serverless Function API](04-serverless-function-api/) | Planned scaffold | HTTP-triggered Function, logging, validation | Serverless API design and runtime operations |
+| [05 — Event-Driven Blob Processing](05-event-driven-blob-processing/) | Planned scaffold | Storage event → Function → processed output | Asynchronous design, idempotency, retry thinking |
+| [06 — Container App Deployment](06-container-app-deployment/) | Planned scaffold | Container image, revision, health checks, logs | Application delivery without Kubernetes overhead |
+| [07 — Monitoring and Alerts](07-monitoring-and-alerts/) | Planned scaffold | Azure Monitor, actionable alerts, runbooks | Operability, signal quality, incident response |
+| [08 — Terraform Azure Foundation](08-terraform-azure-foundation/) | Planned scaffold | Modules, environments, remote state, CI | Repeatable IaC and federated identity |
 
-| Path | Focus | Cloud-engineering signal |
-| --- | --- | --- |
-| `01-resource-group-and-storage` | Resource groups and storage | Resource organisation, tags, access boundaries |
-| `02-static-website` | Storage-based static site | CDN/edge delivery and low-ops hosting |
-| `03-linux-vm-web-server` | Linux VM workload | Networking, administration and cost controls |
-| `04-serverless-function-api` | Function-based API | Event-driven compute and API design |
-| `05-event-driven-blob-processing` | Blob-triggered processing | Asynchronous processing and failure handling |
-| `06-container-app-deployment` | Container Apps | Image-to-runtime deployment and runtime configuration |
-| `07-monitoring-and-alerts` | Azure Monitor | Signals, alerts and incident response |
-| `08-terraform-azure-foundation` | Terraform foundation | Repeatable provider-agnostic Infrastructure as Code |
-
-## Definition of done for a lab
+## Definition of done
 
 A lab is not “done” because the resources exist. It needs:
 
-1. Terraform or reproducible deployment instructions.
-2. A concise architecture diagram and the reason for the chosen services.
+1. Terraform/Bicep or reproducible deployment instructions.
+2. A concise architecture diagram and reason for the chosen services.
 3. A validation checklist or captured evidence.
 4. Security, reliability, and cost trade-offs.
-5. Explicit cleanup steps.
+5. Explicit cleanup steps and, where practical, cleanup proof.
+6. A 30-second interview explanation.
 
 ## Cost guardrails
 
-- Prefer the Azure free tier and short-lived test resources.
-- Tag every resource with an owner and cleanup date.
-- Avoid leaving VMs, public IPs, managed databases, and monitoring retention running unnecessarily.
+- Prefer Azure free-tier-eligible and short-lived resources.
+- Tag resources with an owner and cleanup date.
+- Do not leave VMs, public IPs, managed databases, registry images, or monitoring retention running without a reason.
 - Destroy resources immediately after validation and record what was removed.
+- Treat subscription, regional SKU, and quota constraints as design inputs — not as reasons to overspend.
 
 ## Related portfolio
 
-The cross-cloud overview, AWS case studies, interview stories, and lab standard are maintained in [cloud-engineering-portfolio](https://github.com/titoiunit/cloud-engineering-portfolio).
+The cross-cloud overview, AWS case studies, interview stories, lab standard, and cost-aware roadmap are maintained in [cloud-engineering-portfolio](https://github.com/titoiunit/cloud-engineering-portfolio).
