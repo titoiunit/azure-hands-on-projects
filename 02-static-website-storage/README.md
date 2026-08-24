@@ -1,6 +1,8 @@
 # Azure Lab 02 — Static Website on Azure Storage
 
-**Status:** Completed learning lab with source, verification commands, and cleanup evidence retained in the repository.
+[← Previous: Lab 01](../01-resource-group-and-storage/README.md) · [All labs](../README.md) · [Next: Lab 03 →](../03-linux-vm-web-server/README.md)
+
+**Status:** Completed + cleaned up. Source, verification commands, and cleanup evidence are retained in the repository.
 
 This project delivers a simple static site from Azure Storage static website hosting. It is the Azure counterpart to a private-S3-plus-CDN exercise, with the important difference that the Azure Storage static website endpoint is public by design.
 
