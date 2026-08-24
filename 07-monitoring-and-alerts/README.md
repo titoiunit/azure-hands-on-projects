@@ -1,6 +1,8 @@
 # Azure Lab 07 — Monitoring and Alerts
 
-**Status:** Planned lab scaffold. No Azure resources are represented as deployed yet.
+[← Previous: Lab 06](../06-container-app-deployment/README.md) · [All labs](../README.md) · [Next: Lab 08 →](../08-terraform-azure-foundation/README.md)
+
+**Status:** Planned scaffold. No Azure resources are represented as deployed.
 
 Turn a small Azure workload into an operable service by defining signals, dashboards, alerts, and an incident runbook. The aim is to show judgment: alerts should be actionable, not just numerous.
 
