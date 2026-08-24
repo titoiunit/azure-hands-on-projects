@@ -1,6 +1,8 @@
 # Azure Lab 05 — Event-Driven Blob Processing
 
-**Status:** Planned lab scaffold. No Azure resources are represented as deployed yet.
+[← Previous: Lab 04](../04-serverless-function-api/README.md) · [All labs](../README.md) · [Next: Lab 06 →](../06-container-app-deployment/README.md)
+
+**Status:** Planned scaffold. No Azure resources are represented as deployed.
 
 Build an asynchronous file-processing path where a blob upload triggers a function and the result is written to a separate location. The lab is designed to demonstrate event filtering, retry thinking, idempotency, and operational evidence.
 
