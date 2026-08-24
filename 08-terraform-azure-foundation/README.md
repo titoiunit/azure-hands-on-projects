@@ -1,6 +1,8 @@
 # Azure Lab 08 — Terraform Azure Foundation
 
-**Status:** Planned lab scaffold. No Azure resources are represented as deployed yet.
+[← Previous: Lab 07](../07-monitoring-and-alerts/README.md) · [All labs](../README.md)
+
+**Status:** Planned scaffold. No Azure resources are represented as deployed.
 
 Build a small, provider-appropriate Terraform foundation for Azure. The focus is repeatable environments, state handling, identity, validation, and safe cleanup — not creating a large always-on platform.
 
