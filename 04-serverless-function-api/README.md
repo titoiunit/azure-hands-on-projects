@@ -1,6 +1,8 @@
 # Azure Lab 04 — Serverless Function API
 
-**Status:** Planned lab scaffold. No Azure resources are represented as deployed yet.
+[← Previous: Lab 03](../03-linux-vm-web-server/README.md) · [All labs](../README.md) · [Next: Lab 05 →](../05-event-driven-blob-processing/README.md)
+
+**Status:** Planned scaffold. No Azure resources are represented as deployed.
 
 Build a small HTTP API with Azure Functions to demonstrate serverless execution, request validation, configuration, logging, and a clean deployment contract.
 
