@@ -2,6 +2,8 @@
 
 A cost-aware Azure learning repository that complements my AWS, Terraform, Docker, and CI/CD work. It is organised as a set of small, explainable labs rather than a collection of always-on resources.
 
+**Current portfolio status:** 2 completed and cleaned up · 1 paused with the constraint documented · 5 planned scaffolds
+
 ## How to read this repository
 
 - **Completed** means the repository contains the implementation or manual-lab evidence and the cleanup record.
@@ -22,6 +24,26 @@ A project becomes a featured portfolio case study only after it has implementati
 | [06 — Container App Deployment](06-container-app-deployment/) | Planned scaffold | Container image, revision, health checks, logs | Application delivery without Kubernetes overhead |
 | [07 — Monitoring and Alerts](07-monitoring-and-alerts/) | Planned scaffold | Azure Monitor, actionable alerts, runbooks | Operability, signal quality, incident response |
 | [08 — Terraform Azure Foundation](08-terraform-azure-foundation/) | Planned scaffold | Modules, environments, remote state, CI | Repeatable IaC and federated identity |
+
+### Suggested review path
+
+1. Start with [Lab 01](01-resource-group-and-storage/) for Azure CLI, private storage, troubleshooting, and cleanup evidence.
+2. Continue to [Lab 02](02-static-website-storage/) for a completed delivery case study with verification records.
+3. Read [Lab 03](03-linux-vm-web-server/) for a documented cost-and-capacity decision.
+4. Use Labs [04](04-serverless-function-api/)–[08](08-terraform-azure-foundation/) as the implementation roadmap; they are blueprints, not completed deployments.
+
+## Repository structure
+
+```text
+01-resource-group-and-storage/   completed private-storage lab + cleanup proof
+02-static-website-storage/       completed static-site lab + source + verification
+03-linux-vm-web-server/          paused feasibility assessment + investigation notes
+04-serverless-function-api/      planned implementation blueprint
+05-event-driven-blob-processing/ planned implementation blueprint
+06-container-app-deployment/     planned implementation blueprint
+07-monitoring-and-alerts/        planned implementation blueprint
+08-terraform-azure-foundation/   planned implementation blueprint
+```
 
 ## Definition of done
 
