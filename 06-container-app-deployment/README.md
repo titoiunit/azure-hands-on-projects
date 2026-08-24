@@ -1,6 +1,8 @@
 # Azure Lab 06 — Container App Deployment
 
-**Status:** Planned lab scaffold. No Azure resources are represented as deployed yet.
+[← Previous: Lab 05](../05-event-driven-blob-processing/README.md) · [All labs](../README.md) · [Next: Lab 07 →](../07-monitoring-and-alerts/README.md)
+
+**Status:** Planned scaffold. No Azure resources are represented as deployed.
 
 Deploy a small containerised service to Azure Container Apps. This is the Azure counterpart to an ECS/Fargate-style application exercise: image build, runtime configuration, health checks, logs, revision management, and cleanup.
 
