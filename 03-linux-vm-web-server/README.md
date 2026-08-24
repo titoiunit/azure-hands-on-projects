@@ -1,5 +1,7 @@
 # Azure Lab 03 — Linux VM Web Server Feasibility Assessment
 
+[← Previous: Lab 02](../02-static-website-storage/README.md) · [All labs](../README.md) · [Next: Lab 04 →](../04-serverless-function-api/README.md)
+
 **Status:** Paused before deployment. No virtual machine was created.
 
 This is a documented cost-and-capacity decision, not a falsely completed VM lab. The goal was to deploy a small Ubuntu VM, connect with SSH, install NGINX, and validate HTTP access. The subscription and regional SKU constraints made the intended low-cost VM unavailable, so I investigated and stopped rather than deploying a more expensive alternative.
