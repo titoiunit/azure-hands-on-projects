@@ -1,6 +1,8 @@
 # Azure Lab 01 — Resource Group + Private Blob Storage
 
-**Status:** Completed manual Azure CLI lab; resources were deleted and cleanup is recorded in [cleanup proof](cleanup-proof.md).
+[All labs](../README.md) · [Next: Lab 02 →](../02-static-website-storage/README.md)
+
+**Status:** Completed + cleaned up. The manual Azure CLI lab is documented, the resources were deleted, and the result is retained in [cleanup proof](cleanup-proof.md).
 
 This lab establishes the Azure control-plane and storage basics behind later workloads: a resource group, a storage account, a private blob container, and a verified upload path.
 
